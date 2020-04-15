@@ -10,7 +10,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     networks:
-      - producers
+      - kafka
     deploy:
         restart_policy:
           condition: on-failure
@@ -19,7 +19,7 @@ services:
     image: confluentinc/cp-kafka:5.4.1
     hostname: kafka
     networks:
-      - producers
+      - kafka
     container_name: kafka
     ports:
       - 9092:9092
@@ -42,7 +42,7 @@ services:
   kafka-schema-registry:
     image: confluentinc/cp-schema-registry:5.4.1
     networks:
-      - producers
+      - kafka
     hostname: kafka-schema-registry
     ports:
       - "8081:8081"
@@ -57,7 +57,7 @@ services:
   schema-registry-ui:
     image: landoop/schema-registry-ui:0.9.4
     networks:
-      - producers
+      - kafka
     hostname: kafka-schema-registry-ui
     ports:
       - "8001:8000"
@@ -70,7 +70,7 @@ services:
   kafka-rest-proxy:
     image: confluentinc/cp-kafka-rest:5.4.1
     networks:
-      - producers
+      - kafka
     hostname: kafka-rest-proxy
     ports:
       - "8082:8082"
@@ -87,7 +87,7 @@ services:
   kafka-topics-ui:
     image: landoop/kafka-topics-ui:0.9.4
     networks:
-      - producers
+      - kafka
     hostname: kafka-topics-ui
     ports:
       - "8000:8000"
@@ -101,4 +101,4 @@ services:
       - kafka-rest-proxy
 
 networks:
-  producers:
+  kafka:
