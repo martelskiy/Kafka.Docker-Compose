@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:5.4.1
+    image: confluentinc/cp-zookeeper:5.4.2
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -16,7 +16,7 @@ services:
           condition: on-failure
 
   kafka:
-    image: confluentinc/cp-kafka:5.4.1
+    image: confluentinc/cp-kafka:5.4.2
     hostname: kafka
     networks:
       - kafka
@@ -40,7 +40,7 @@ services:
         condition: on-failure
 
   kafka-schema-registry:
-    image: confluentinc/cp-schema-registry:5.4.1
+    image: confluentinc/cp-schema-registry:5.4.2
     networks:
       - kafka
     hostname: kafka-schema-registry
@@ -68,7 +68,7 @@ services:
       - kafka-schema-registry
 
   kafka-rest-proxy:
-    image: confluentinc/cp-kafka-rest:5.4.1
+    image: confluentinc/cp-kafka-rest:5.4.2
     networks:
       - kafka
     hostname: kafka-rest-proxy
